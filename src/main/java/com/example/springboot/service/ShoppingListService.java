@@ -3,7 +3,6 @@ package com.example.springboot.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,24 +13,24 @@ List<Product> list;
 		list = new ArrayList<Product>();
 	}
 	
-	public ResponseEntity<Integer> addProduct(Product newProduct,List<Product> ls) {
+	public boolean addProduct(Product newProduct,List<Product> ls) {
 		for(Product produc:ls) {
 			if(produc.getName()==newProduct.getName()) {
-				return ResponseEntity.badRequest().build();
+				return false;
 			}
 		}
 		ls.add(newProduct);
-		return ResponseEntity.ok().build();
+		return true;
 	}
 	
-	public ResponseEntity<Integer> removeProduct(String name,List<Product> ls) {
+	public boolean removeProduct(String name,List<Product> ls) {
 		for(Product pr:ls) {
 			if(pr.getName()==name) {
 				ls.remove(pr);
-				return ResponseEntity.ok().build();
+				return true;
 			}
 		}
-		return ResponseEntity.notFound().build();
+		return false;
 	}
 	
 	public List<Product> showList() {

@@ -16,14 +16,14 @@ import com.example.springboot.service.ShoppingListService;
 
 @RestController
 @RequestMapping("/api/v1/item")
-public class ListaCompraController {
+public class ShoppingListController {
 	@Autowired
 	private ShoppingListService lista = new ShoppingListService();
 	
 	
 	@DeleteMapping
 	public ResponseEntity<Integer> removeProduct(@RequestParam("name") String name,List<Product> ls) {
-		return lista.removeProduct(name, ls);
+		return lista.removeProduct(name, ls)?ResponseEntity.ok().build():ResponseEntity.notFound().build();
 	}
 	@GetMapping
 	public List<Product> showList() {
@@ -31,7 +31,7 @@ public class ListaCompraController {
 	}
 	@PostMapping
 	public ResponseEntity<Integer> addProduct(Product newProduct,List<Product> ls) {
-		return lista.addProduct(newProduct, ls);
+		return lista.addProduct(newProduct, ls)?ResponseEntity.ok().build():ResponseEntity.badRequest().build();
 	}
 
 }
