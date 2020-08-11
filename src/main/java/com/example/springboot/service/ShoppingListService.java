@@ -14,8 +14,8 @@ public class ShoppingListService {
 	}
 	
 	public boolean addProduct(Product newProduct) {
-		for(Product produc:list) {
-			if(produc.getName()==newProduct.getName()) {
+		for(Product product:list) {
+			if(product.getName()==newProduct.getName()) {
 				return false;
 			}
 		}

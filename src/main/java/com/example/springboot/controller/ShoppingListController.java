@@ -27,7 +27,7 @@ public class ShoppingListController {
 				: ResponseEntity.notFound().build();
 	}
 	@GetMapping
-	public List<Product> showList() {
+	public List<Product> getList() {
 		return lista.getList();
 	}
 	@PostMapping
