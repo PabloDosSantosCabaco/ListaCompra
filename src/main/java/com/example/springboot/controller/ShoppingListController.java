@@ -20,18 +20,19 @@ public class ShoppingListController {
 	@Autowired
 	private ShoppingListService lista = new ShoppingListService();
 	
-	
 	@DeleteMapping
-	public ResponseEntity<Integer> removeProduct(@RequestParam("name") String name,List<Product> ls) {
-		return lista.removeProduct(name, ls)?ResponseEntity.ok().build():ResponseEntity.notFound().build();
+	public ResponseEntity<Integer> removeProduct(@RequestParam("name") String name) {
+		return lista.removeProduct(name)
+				? ResponseEntity.ok().build()
+				: ResponseEntity.notFound().build();
 	}
 	@GetMapping
 	public List<Product> showList() {
-		return lista.showList();
+		return lista.getList();
 	}
 	@PostMapping
-	public ResponseEntity<Integer> addProduct(Product newProduct,List<Product> ls) {
-		return lista.addProduct(newProduct, ls)?ResponseEntity.ok().build():ResponseEntity.badRequest().build();
+	public ResponseEntity<Integer> addProduct(Product newProduct) {
+		return lista.addProduct(newProduct)?ResponseEntity.ok().build():ResponseEntity.badRequest().build();
 	}
 
 }

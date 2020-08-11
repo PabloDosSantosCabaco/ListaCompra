@@ -7,33 +7,33 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ShoppingListService {
-List<Product> list;
+	List<Product> list;
 	
 	public ShoppingListService() {
 		list = new ArrayList<Product>();
 	}
 	
-	public boolean addProduct(Product newProduct,List<Product> ls) {
-		for(Product produc:ls) {
+	public boolean addProduct(Product newProduct) {
+		for(Product produc:list) {
 			if(produc.getName()==newProduct.getName()) {
 				return false;
 			}
 		}
-		ls.add(newProduct);
+		list.add(newProduct);
 		return true;
 	}
 	
-	public boolean removeProduct(String name,List<Product> ls) {
-		for(Product pr:ls) {
+	public boolean removeProduct(String name) {
+		for(Product pr:list) {
 			if(pr.getName()==name) {
-				ls.remove(pr);
+				list.remove(pr);
 				return true;
 			}
 		}
 		return false;
 	}
 	
-	public List<Product> showList() {
+	public List<Product> getList() {
 		return list;
 	}
 	
