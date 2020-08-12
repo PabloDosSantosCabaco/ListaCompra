@@ -15,7 +15,7 @@ public class ShoppingListService {
 	
 	public boolean addProduct(Product newProduct) {
 		for(Product product:list) {
-			if(product.getName()==newProduct.getName()) {
+			if(product.getName().equals(newProduct.getName())) {
 				return false;
 			}
 		}
@@ -25,7 +25,7 @@ public class ShoppingListService {
 	
 	public boolean removeProduct(String name) {
 		for(Product pr:list) {
-			if(pr.getName()==name) {
+			if(pr.getName().equals(name)) {
 				list.remove(pr);
 				return true;
 			}
